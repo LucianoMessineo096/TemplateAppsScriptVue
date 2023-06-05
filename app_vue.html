@@ -1,0 +1,90 @@
+<script>
+
+  new Vue({
+
+    el:'#app',
+    vuetify: new Vuetify({
+      theme: {
+        themes: {
+          light: {
+            primary: '#D04A02',
+            secondary: '#FFB600',
+            accent: '#82B1FF',
+            error: '#C52A1A',
+            info: '#2196F3',
+            success: '#22992E',
+            warning: '#FFBF1F',
+          },
+        },
+      },
+    }),
+    data() {
+
+      return {
+
+        customerId : null,
+        linkCreate:null,
+        linkUpdate:null,
+        myroute: "home-page",
+      }
+
+    },
+    methods:{
+
+      updateLatestForm: function(customerId){
+
+        console.log('UPDATE')
+
+        this.customerId = customerId.toString()
+
+        google.script.run.withSuccessHandler((res)=>{
+
+          console.log(res)
+          this.linkUpdate = res.link
+          window.open(res.link)
+
+        }).GetForm(this.customerId,'update');
+              
+      },
+
+      createNewForm : function(customerId){
+
+        console.log('CREATE')
+
+        this.customerId = customerId.toString()
+
+        google.script.run.withSuccessHandler((res)=>{
+
+          console.log(res)
+          this.linkCreate = res.link
+          window.open(res.link)
+
+
+        }).GetForm(this.customerId,'create')
+      },
+      togglePages() {
+        this.show = this.show ? false : true;
+      },
+      route: function (event) {
+
+        this.myroute = event;
+      },
+      routeForm: function (event) {
+        document.getElementById('myBtn').click()
+      }, 
+
+
+    },
+    created(){
+
+      
+
+
+    }
+
+
+  })
+
+
+
+</script>
