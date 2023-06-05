@@ -1,0 +1,44 @@
+<script>
+
+    Vue.component('homepage-component', {
+        props: ['expirationdate'],
+        data() {
+            return {
+                image: {backgroundImage: "url(https://drive.google.com/uc?export=download&id=1kK1Zm2hvXVxHHYc6Vy5IioVbUMjPm-YJ)" },
+            }
+        },
+        computed: {
+
+        },
+        methods: {
+            route: function (event) {
+                this.$emit('routeForm', event)
+            },
+            /*sendShowForm(event){
+                this.$emit('route-form','form-page')
+            }*/
+            
+
+        },
+        beforeCreate() {
+            
+        },
+        created() {
+           
+        },
+        beforeMount() {
+
+        },
+        mounted() {
+        },
+        beforeUpdate() {
+
+        },
+        updated() {
+
+        },
+        template: `#homepage-template`
+    });
+
+
+</script>
